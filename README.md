@@ -1,7 +1,9 @@
 **Code Snippet Generator**
+
 This project is a web application that allows users to search for code snippets in various programming languages. Users can securely sign up and log in, and their credentials are encrypted using bcrypt for data security. Upon login, a JWT session ID is created, which expires after a specified time. The frontend is developed using React, while the backend utilizes Express and Node.js, with MongoDB as the database.
 
 **Features:**
+
 1. User Authentication: Users can securely sign up and log in to the application. Credentials are encrypted using bcrypt.
 2. JWT Session Management: Upon login, a JWT session ID is created, which expires after a specified time.
 3. Code Snippet Search: Users can search for code snippets in different programming languages using the Google Gemini API.
@@ -11,11 +13,13 @@ This project is a web application that allows users to search for code snippets 
 7. View Previous Snippets: Users can view their previously searched snippets and copy them for reuse.
 
 **Technologies Used:**
+
 Frontend: React
 Backend: Express, Node.js
 Database: MongoDB
 
 **Setup Instructions:**
+
 - Clone the repository.
 - Navigate to the backend directory and install dependencies using npm install.
 - Set up MongoDB and obtain the connection URI.
@@ -25,6 +29,7 @@ Database: MongoDB
 - Start the React development server using npm start.
   
 **Usage:**
+
 1. Sign up or log in to the application.
 2. Search for code snippets using the provided search functionality.
 3. View the search results and copy snippets to the clipboard for use in your projects.
