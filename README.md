@@ -1,2 +1,32 @@
-Code Snippet Generator Application
-This project is an application that generates code snippets based on user descriptions of functionality using generative AI. It features an authentication system for users to save and retrieve their requests and generated snippets. The frontend is developed using React.js, while the backend utilizes Node.js and Express.js. MongoDB is employed as the database, and JWT tokens are used for authentication.
+**Code Snippet Generator**
+This project is a web application that allows users to search for code snippets in various programming languages. Users can securely sign up and log in, and their credentials are encrypted using bcrypt for data security. Upon login, a JWT session ID is created, which expires after a specified time. The frontend is developed using React, while the backend utilizes Express and Node.js, with MongoDB as the database.
+
+**Features:**
+1. User Authentication: Users can securely sign up and log in to the application. Credentials are encrypted using bcrypt.
+2. JWT Session Management: Upon login, a JWT session ID is created, which expires after a specified time.
+3. Code Snippet Search: Users can search for code snippets in different programming languages using the Google Gemini API.
+4. Loading Feature: A loading indicator is displayed while fetching data from the API.
+5. Custom Prompt for LLM Model: Custom prompt is used to limit the LLM model to generate responses related to code and snippets only.
+6. Clipboard Copy: Users can copy code snippets to the clipboard for easy use.
+7. View Previous Snippets: Users can view their previously searched snippets and copy them for reuse.
+
+**Technologies Used:**
+Frontend: React
+Backend: Express, Node.js
+Database: MongoDB
+
+**Setup Instructions:**
+- Clone the repository.
+- Navigate to the backend directory and install dependencies using npm install.
+- Set up MongoDB and obtain the connection URI.
+- Create a .env file with the necessary environment variables (e.g., PORT, MONGODB_URI, JWT_SECRET).
+- Start the backend server using npm start.
+- Navigate to the frontend directory and install dependencies using npm install.
+- Start the React development server using npm start.
+  
+**Usage:**
+1. Sign up or log in to the application.
+2. Search for code snippets using the provided search functionality.
+3. View the search results and copy snippets to the clipboard for use in your projects.
+4. Access your previously searched snippets using the "Snippets" button.
+   
