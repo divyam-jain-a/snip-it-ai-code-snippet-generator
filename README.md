@@ -2,6 +2,10 @@
 
 This project is a web application that allows users to search for code snippets in various programming languages. Users can securely sign up and log in, and their credentials are encrypted using bcrypt for data security. Upon login, a JWT session ID is created, which expires after a specified time. The frontend is developed using React, while the backend utilizes Express and Node.js, with MongoDB as the database.
 
+**Demo**
+
+https://github.com/divyam-jain-a/snip-it-ai-code-snippet-generator/assets/86477777/92d35fb4-8996-484f-b3e8-d518ae8e7bf0
+
 **Features:**
 
 1. User Authentication: Users can securely sign up and log in to the application. Credentials are encrypted using bcrypt.
@@ -27,8 +31,6 @@ Database: MongoDB
 - Start the backend server using npm start.
 - Navigate to the frontend directory and install dependencies using npm install.
 - Start the React development server using npm start.
-  
-**Usage:**
 
 1. Sign up or log in to the application.
 2. Search for code snippets using the provided search functionality.
