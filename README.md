@@ -1,0 +1,2 @@
+Code Snippet Generator Application
+This project is an application that generates code snippets based on user descriptions of functionality using generative AI. It features an authentication system for users to save and retrieve their requests and generated snippets. The frontend is developed using React.js, while the backend utilizes Node.js and Express.js. MongoDB is employed as the database, and JWT tokens are used for authentication.
