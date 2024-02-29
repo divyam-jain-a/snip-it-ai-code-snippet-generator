@@ -11,7 +11,7 @@ router.post('/add-snippet', (req, res) => {
         userId: req.body.userId
     }).then(response => {
         return res.json(response)
-    }).catch(err => console.log(err));
+    }).catch(err => alert(err));
 })
 
 router.get('/all-snippets/:userId', async (req, res) => {
@@ -20,7 +20,7 @@ router.get('/all-snippets/:userId', async (req, res) => {
         const snippets = await snippet.find({ userId: userId });
         res.json(snippets);
     } catch (error) {
-        console.log(error);
+        alert(error);
     }
 })
 

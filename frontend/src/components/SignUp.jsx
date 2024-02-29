@@ -1,22 +1,30 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
-import img from '../img/snipIt.png'
+import img from '../img/snipIt.png';
+import LoadingsScreen from './LoadingsScreen';
+
+
 const SignUp = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post("http://localhost:5000/auth/signup", { username, email, password }).then(response => {
-            // console.log(response)
-            if (response.data.status) {
-                navigate('/login');
-            }
-            else alert("Try again")
+            setLoading(true);
+            setTimeout(() => {
+                if (response.data.status) {
+                    navigate('/login');
+                }
+                else alert("Try again")
+                setLoading(false);
+            }, 1000);
+            
         }).catch(err => {
             alert(err);
             console.log(err);
@@ -24,12 +32,13 @@ const SignUp = () => {
     }
     return (
         <div className="min-h-screen bg-gray-200 flex justify-center items-center">
+            {loading && <LoadingsScreen />}
             <div className='bg-customgreen h-screen w-1/2'></div>
             <div className='bg-black h-screen w-1/2'></div>
             <div className="bg-customblack border-2 border-[#3e3e3e] p-8 rounded-xl text-white shadow-md w-96 absolute">
                 <div className="flex items-center justify-center mb-8">
                     <img src={img} alt="Description of your image" className="w-auto h-12 mr-1" />
-                    <h1 className="text-2xl font-bold tracking-wide text-customwhite font-sans">SNIP.AI</h1>
+                    <h1 className="text-xl font-extrabold tracking-wide text-customwhite font-sans">SNIP<a className='text-customgreen'>.AI</a></h1>
                 </div>
                 <form onSubmit={submitHandler}>
                     <input type="text"

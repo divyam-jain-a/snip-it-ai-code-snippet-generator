@@ -1,8 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import NavBar from './NavBar';
-import img from '../img/right-arrow.png'
+import enter1 from '../img/next1.png';
+import enter2 from '../img/next2.png';
+import tick from '../img/basic-tick.png';
+import copy from '../img/copy.png';
 
 const Snippet = () => {
     const genAI = new GoogleGenerativeAI('AIzaSyC47Erq2umFB5ssXwgjIND_S0U5cjeJK04');
@@ -14,7 +18,9 @@ const Snippet = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [welcomeText, setWelcomeText] = useState(true);
     const [displayText, setDisplayText] = useState('');
+    const [isHovered, setIsHovered] = useState(false);
     const [index, setIndex] = useState(0);
+    const [copySuccess, setCopySuccess] = useState(false);
     const [snippet, setSnippet] = useState({
         title: "",
         language: "",
@@ -43,6 +49,7 @@ const Snippet = () => {
 
         return () => clearInterval(interval);
     }, [index, aiResponse]);
+
     axios.defaults.withCredentials = true;
 
     const aiRun = async () => {
@@ -71,10 +78,11 @@ const Snippet = () => {
         await aiRun();
         setWelcomeText(false);
         setIsLoading(false);
+        e.target.reset();
     }
     return (
         <div className='h-screen w-screen bg-customblack'>
-            <NavBar />
+            <NavBar status={true} />
             <div className="h-5/6 mt-4 flex flex-col justify-center items-center">
                 <div className="h-full w-3/4">
                     {/* Text Div */}
@@ -86,7 +94,23 @@ const Snippet = () => {
                                 </div>
                             )}
                             {!isLoading &&
-                                <pre className="bg-[#292929] border-2 border-[#3e3e3e] rounded-lg text-white px-6 py-3 text-base cursor-pointer transition overflow-auto"><code>{welcomeText && <>// Hi Coder, let's go !!!</>}{displayText}</code></pre>
+                                <pre className="bg-[#292929]  border-2 border-[#3e3e3e] rounded-lg text-white px-6 py-3 text-base cursor-pointer transition overflow-auto">
+                                    {!welcomeText &&
+                                        <CopyToClipboard text={aiResponse} onCopy={(result) => {
+                                            setCopySuccess(result);
+                                            setTimeout(() => {
+                                                setCopySuccess(false);
+                                            }, 1000);
+                                        }}>
+                                            <div className="flex justify-end">
+                                                <button className="h-8 p-2 absolute bg-[#181818] border-[#3e3e3e] border-2 rounded-lg text-customgreen font-semibold text-base hover:border-customgreen cursor-pointer transition">
+                                                    {copySuccess === aiResponse ? <img className=' h-full bg-[#181818]  text-customgreen font-semibold text-base' src={tick} /> :
+                                                        <img className='h-full bg-[#181818] text-customgreen font-semibold text-base' src={copy} />}</button>
+                                            </div>
+                                        </CopyToClipboard>
+                                    }
+                                    <code>{welcomeText && <>// Hey Coder, let's get started !!</>}{displayText}</code>
+                                </pre>
                             }
                         </div>
                     </div>
@@ -104,10 +128,23 @@ const Snippet = () => {
                                     className="w-full h-full bg-[#292929] border-2 border-[#3e3e3e] rounded-lg text-white px-2 py-3 text-base hover:border-customgreen cursor-pointer transition focus:outline-none focus:shadow-outline"
                                 />
                             </div>
-                            <button type="submit" className=" text-white w-12 h-12 m-1 p-2 rounded-full border-2 border-customgreen cursor-pointer transition">
-                                <img src={img} />
+                            <button type="submit" className=" w-12 h-12 mt-1 p-1 rounded-full cursor-pointer"
+                                onMouseEnter={() => setIsHovered(true)}
+                                onMouseLeave={() => setIsHovered(false)}
+                            >
+                                <img
+                                    src={isHovered ? enter2 : enter1}
+                                    className="transition duration-300 opacity-100 inset-0"
+                                />
                             </button>
                         </form>
+                    }
+                    {!islogged &&
+                        <div className='flex justify-center'>
+                            <pre className="bg-[#292929]  border-2 border-[#3e3e3e] rounded-lg text-white px-6 py-3 text-base cursor-pointer transition overflow-auto">
+                                <code>// Please login or create an account;</code>
+                            </pre>
+                        </div>
                     }
                 </div>
             </div>

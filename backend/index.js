@@ -19,7 +19,7 @@ app.use('/snippet', SnippetRouter)
 
 // mongodb connection
 mongoose.connect('mongodb://127.0.0.1:27017/authentication').then(() =>
-    console.log(`Database Connected`)).catch(err => console.log(err));
+    console.log(`Database Connected`)).catch(err => alert(err));
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is Running on port: ${process.env.PORT}`)

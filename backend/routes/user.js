@@ -46,6 +46,7 @@ const verifyUser = async (req, res, next) => {
         next()
     }
     catch (err) {
+        alert(err);
         return res.json(err);
     }
 }
