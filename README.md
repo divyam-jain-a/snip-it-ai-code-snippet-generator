@@ -4,7 +4,10 @@ This project is a web application that allows users to search for code snippets 
 
 **Demo**
 
-https://github.com/divyam-jain-a/snip-it-ai-code-snippet-generator/assets/86477777/92d35fb4-8996-484f-b3e8-d518ae8e7bf0
+
+https://github.com/divyam-jain-a/snip-it-ai-code-snippet-generator/assets/86477777/0dd2a24b-ecb5-44cf-858d-6d4f206c76c4
+
+
 
 **Features:**
 
